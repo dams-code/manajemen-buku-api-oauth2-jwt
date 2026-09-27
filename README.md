@@ -167,7 +167,38 @@ def verify_access_token(token: str) -> TokenData:
 </tr>
 </table>
 
-### *Kode diatas dari itsdangerous menjadi PyJWT saya coba ambil dan modifikasi dari situs [fastapi.tiangolo.com](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#update-the-token-path-operation)*
+#### *Kode diatas dari itsdangerous menjadi PyJWT saya coba ambil dan modifikasi dari situs [fastapi.tiangolo.com](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#update-the-token-path-operation)*
+
+#### Perubahan pada validasi user dan token
+
+<table>
+<tr>
+<th width="50%">itsdangerous</th>
+<th width="50%">PyJWT</th>
+</tr>
+<tr>
+<td valign="top">
+  
+  ```python
+  cek_username_aktif = verify_access_token(token, 3600)
+
+  if cek_username_aktif.lower() != username.lower():
+    ...
+  ```
+
+</td>
+<td>
+
+  ```python
+  cek_username_aktif = verify_access_token(token)
+  
+  if cek_username_aktif.username.lower() != username.lower():
+    ...
+  ```
+
+</td>
+</tr>
+</table>
 
 <br/>
 
